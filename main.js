@@ -15,7 +15,7 @@ function rand(max) {
     return Math.floor(Math.random() * max);
 }
 
-function buildTile(num, round) {
+function buildTile(num) {
     const element = document.createElement("div");
     element.classList.add("tile");
     element.setAttribute("number", num);
@@ -43,12 +43,18 @@ function buildTile(num, round) {
           element.style.backgroundColor = "aqua";
           if (count == round) {//all are clicked
             console.log("count equals round")
-              round = round+1;
-              console.log(round);
-              document.getElementById("roundnum").innerHTML = round;
-              count = 0;
-              setTiles();
-              greenScreen(round);
+            round = round+1;
+            console.log("round:" + round);
+            document.getElementById("roundnum").innerHTML = round;
+            count = 0;
+            //reset all true to false
+            let b = document.querySelectorAll(`[bool="true"]`);
+            console.log(b)
+            for (let i = 0; i < round-1; ++i) {
+              b[i].setAttribute("bool", "false");
+            }
+            setTiles();
+            greenScreen(round);
           }
       }
       
@@ -77,6 +83,7 @@ function setTiles() {//set specified number of random tiles to true
   for (let i = 0; i < across*across; ++i) {
       arr[i] = i;
   }
+  console.log(round);
   for (let i = 0; i < round; ++i) {
       let num = 0;
       num = rand(across*across-x);
