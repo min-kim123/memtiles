@@ -16,23 +16,23 @@
 </p>
     
     <form>
-      <div id="pick-dimension">
-
-          <input type="radio" name="dimensions" id="rad5" value="5">
-          <label for="rad5">5x5</label>
-          <input type="radio" name="dimensions" id="rad6" value="6">
-          <label for="rad6">6x6</label>
-          <input type="radio" name="dimensions" id="rad7" value="7">
-          <label for="rad7">7x7</label>
-          <input type="radio" name="dimensions" id="rad8" value="8">
-          <label for="rad8">8x8</label>
-          <input type="radio" name="dimensions" id="rad9" value="9">
-          <label for="rad9">9x9</label>
-          
-        </select>
+      <div class="btn-dimension" data-toggle="buttons">
+        <label id='RADIO' class="btn btn-primary">
+          <input type="radio" name="dimensions" id="rad5" value="5" checked>5x5
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="dimensions" id="rad6" value="6">6x6
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="dimensions" id="rad7" value="7">7x7
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="dimensions" id="rad8" value="8">8x8
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="dimensions" id="rad9" value="9">9x9
+        </label>
       </div>
-
-
         <h2>Round: </h2>
         <h2 id="roundnum"></h2>
         <h2>High Score: </h2>
