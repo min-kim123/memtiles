@@ -2,11 +2,13 @@ let round = 3;
 let count = 0;
 let wrong = 0;
 let setarr = [];
-let highScore5 = 0;
-let highScore6 = 0;
-let highScore7 = 0;
-let highScore8 = 0;
-let highScore9 = 0;
+let highScore5 = 3;
+let highScore6 = 3;
+let highScore7 = 3;
+let highScore8 = 3;
+let highScore9 = 3;
+let highScoreArr = [highScore5, highScore6, highScore7, highScore8, highScore9];
+
 //$('video').playbackRate=x
 function rand(max) {
     return Math.floor(Math.random() * max);
@@ -17,9 +19,10 @@ function greenScreen(across) {//display at start and between rounds
   let el = document.querySelectorAll(".tile");
   for (let i = 0; i < across*across; ++i) {
       el[i].style.backgroundColor = "green"
-      el[i].style.setProperty('border', '1px solid #2d990c')
-  }
+      el[i].style.setProperty('border', '1px solid #2d990c')}
+  if (round == 3) {//display "click to advance to next round"
 
+  }
 }
 
 function buildTile(num, across) {
@@ -29,10 +32,29 @@ function buildTile(num, across) {
     element.setAttribute("number", num);
     element.setAttribute("bool", false);
     element.addEventListener("click", () => {
-      if (element.style.backgroundColor == "red" && wrong < 10) {
-        return;
+      console.log("clicked")
+      //click and nothing happens cases:
+      if (element.style.backgroundColor == "red" || element.style.backgroundColor == "aqua") {//click on tile that's already red or blue
+        if (wrong >= 10) {//wrong count is more than 10
+          if (round > highScoreArr[across-5]) {
+            console.log("BEAT HS");
+            document.getElementById("highScore").innerHTML = 'High Score: '+ round;
+            highScoreArr[across-5] = round;
+          }
+                    wrong = 0;
+          document.getElementById("wrong").innerHTML = wrong;
+          round = 3;
+          document.getElementById("roundnum").innerHTML = 'Round: '+ round;
+          let string = 'highScore'.concat(across.toString());
+          buildContainer(across);
+          greenScreen(across);
+        }
+        else {
+          return;
+        }
       }
-      else if (element.style.backgroundColor == "green") {//it is green , display blue tiles
+      else if (element.style.backgroundColor == "green") {//it is green , start round
+        console.log("clicked wehn green")
         //get rid of green
         let el = document.querySelectorAll(".tile");
         for (let i = 0; i < across*across; ++i) {
@@ -64,7 +86,7 @@ function buildTile(num, across) {
           console.log(a)
         }
       }
-      else if(element.getAttribute("bool") == "true") {//if it's not green and it's right
+      else if(element.getAttribute("bool") == "true") {//if user finds right square
           count++;
           console.log(count);
           console.log("clicked");
@@ -74,14 +96,13 @@ function buildTile(num, across) {
             console.log("count equals round")
             round = round+1;
             console.log("round:" + round);
-            document.getElementById("roundnum").innerHTML = round;
+            document.getElementById("roundnum").innerHTML = 'Round: '+ round;
             count = 0;
-
             setTiles(across);
             greenScreen(across);
           }
       }
-      else if (element.getAttribute("bool") == "false" && element.style.backgroundColor != "aqua"){//not green, not right
+      else if (element.style.backgroundColor != "aqua"){//if user clicks wrongs square
         element.style.backgroundColor = "red";
         wrong++;
         document.getElementById("wrong").innerHTML = wrong;
@@ -93,17 +114,7 @@ function buildTile(num, across) {
               el[i].style.setProperty('border', '1px solid red')
           }
         }
-        else if (wrong > 10) {//restart game
-          wrong = 0;
-          document.getElementById("wrong").innerHTML = wrong;
-          round = 3;
-          document.getElementById("roundnum").innerHTML = round;
-          buildContainer(across);
-          greenScreen(across);
-
-        }
       }
-      
     });
     return element;
 }
@@ -146,12 +157,13 @@ function build() {
   console.log('build')
   let across = 5;
   buildContainer(across);
-  document.getElementById("roundnum").innerHTML = round;
+  document.getElementById("roundnum").innerHTML = 'Round: '+ round;
   document.querySelector("div.btn-dimension").addEventListener("click", function(evt){
     if (evt.target.type === "radio") {
       wrong = 0;
       round = 3;
-      document.getElementById("roundnum").innerHTML = round;
+      document.getElementById("roundnum").innerHTML = 'Round: ' + round;
+      document.getElementById("wrong").innerHTML = wrong;
       console.log(evt.target.value)
       across = evt.target.value;
       buildContainer(across);
