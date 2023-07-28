@@ -4,10 +4,10 @@ body {
 }
 
 .tiles {
-    margin: 48px auto;
+    margin: auto;
     width: max-content;
     display: grid;
-    grid-template-columns: repeat(4, 102px);
+    grid-template-columns: repeat(4, 100px);
  
 }
 

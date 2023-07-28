@@ -39,10 +39,10 @@ function buildTile(num, across) {
           if (round > highScoreArr[across-5]) {
             console.log("BEAT HS");
             document.getElementById("highScore").innerHTML = 'High Score: '+ round;
-            highScoreArr[across-5] = round;
+            localStorage.setItem(highScoreArr[across-5], round);
           }
-                    wrong = 0;
-          document.getElementById("wrong").innerHTML = wrong;
+          wrong = 0;
+          document.getElementById("wrong").innerHTML = "Wrong: " +wrong;
           round = 3;
           document.getElementById("roundnum").innerHTML = 'Round: '+ round;
           let string = 'highScore'.concat(across.toString());
@@ -105,7 +105,7 @@ function buildTile(num, across) {
       else if (element.style.backgroundColor != "aqua"){//if user clicks wrongs square
         element.style.backgroundColor = "red";
         wrong++;
-        document.getElementById("wrong").innerHTML = wrong;
+        document.getElementById("wrong").innerHTML = "Wrong: " +wrong;
         if (wrong == 10) {
           console.log("green screen")
           let el = document.querySelectorAll(".tile");
@@ -145,10 +145,16 @@ function buildContainer(across) {
     tilesContainer.firstElementChild.remove();
   }
   console.log(across)
-  tilesContainer.style.setProperty('grid-template-columns', 'repeat(' + across + ', 102px');
+  let dimension = 550/across;
+  tilesContainer.style.setProperty('grid-template-columns', 'repeat(' + across + ', '+dimension+ 'px)');
+  //change this to be a fraction of the width of screen
+
   for (let i = 0; i <across*across; ++i) {
-      const tile = buildTile(i, across);
-      tilesContainer.appendChild(tile);
+    const tile = buildTile(i, across);
+    tilesContainer.appendChild(tile);
+    //change
+    let dimension = 550/across;
+    tile.style.setProperty('height', ' '+ dimension+ 'px');
   } 
   setTiles(across);
 }
@@ -163,7 +169,7 @@ function build() {
       wrong = 0;
       round = 3;
       document.getElementById("roundnum").innerHTML = 'Round: ' + round;
-      document.getElementById("wrong").innerHTML = wrong;
+      document.getElementById("wrong").innerHTML = "Wrong: " +wrong;
       console.log(evt.target.value)
       across = evt.target.value;
       buildContainer(across);
@@ -172,22 +178,5 @@ function build() {
   });
   greenScreen(across);
 }
-document.querySelectorAll('.button')
-  .forEach((button) => {
-    //if ()
-  });
 
-
-
-build();
-
-//localStorage.setItem('');
-
-// setTimeout(() => {
-//     let a = document.querySelectorAll(`[bool="true"]`);
-//     for (let i = 0; i < round; ++i) {
-//     a[i].style.backgroundColor = "444444"
-// }
-
-
-// }, 1000);
+build();//start
