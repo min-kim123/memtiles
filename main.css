@@ -1,7 +1,14 @@
 body {
+  overflow-x: hidden;
     background: #333333;
-    margin:0;
 }
+.box {
+  width: 600px;
+  margin: auto;
+  padding: 50px;
+  background: #222222;
+}
+
 button {
   border: none;
   cursor: pointer;
@@ -21,13 +28,29 @@ img {
     width: max-content;
     display: grid;
     grid-template-columns: repeat(4, 100px);
+    gap: 3px;
  
+}
+
+.tile {
+  height: 100px;
+  background: #111111;
+  border: 3px solid #444444;
+  cursor: pointer;
+  border-radius: 3px;
+
+}
+
+.green-tile {
+  background: green;
+  border: 1px solid #2d990c
 }
 
 .wrong-tiles {
 
   display: grid;
   grid-template-columns: repeat(5, 50px);
+  padding-bottom: 20px;
 }
 
 .tiles2 {
@@ -36,26 +59,21 @@ img {
   display: grid;
   grid-template-columns: repeat(4, 48px);
 
+
+
 }
 
-.tile {
-  height: 100px;
-  background: #111111;
-  border: 1px solid #444444;
-  cursor: pointer;
-}
 
 .wrong-tile {
   height: 48px;
   background: #111111;
   border: 1px solid #444444;
+  border-radius: 3px;
 }
-
 
 .btn, .but {
   cursor: pointer;
 }
-
 
 .text {
   position: absolute;
@@ -66,12 +84,17 @@ img {
 }
 
 .messages {
-  width: 50%;
+  width: 40%;
   float: left;
-
 }
+
+.reset {
+  width: 10%;
+  float: left;
+}
+
 
 /*todo
 - max for wrong
-- grid for wrongs
+- localstorage record updates every time round is higher
 */

@@ -7,54 +7,53 @@
         <title> Memory Tiles</title>
         <link rel="stylesheet" href="main.css">
     </head>
-    <h1 style="color:#2daf8a"> <center>Memory Tiles</center>
+    <h1 style="color:aqua"> <center>Memory Tiles</center>
     </h1>
-    
-    <form>
-      <div class="buttons">
-        <label class="btn">
-          <input type="radio" name="dimensions" id="rad5" value="5" checked>5x5
-        </label>
-        <label class="btn">
-          <input type="radio" name="dimensions" id="rad6" value="6">6x6
-        </label>
-        <label class="btn">
-          <input type="radio" name="dimensions" id="rad7" value="7">7x7
-        </label>
-        <label class="btn">
-          <input type="radio" name="dimensions" id="rad8" value="8">8x8
-        </label>
-        <label class="btn">
-          <input type="radio" name="dimensions" id="rad9" value="9">9x9
-        </label>
-      </div>
+    <div class="box" >
+      <form>
+        <div class="buttons">
+          <label class="btn">
+            <input type="radio" name="dimensions" id="rad5" value="5" checked>5x5
+          </label>
+          <label class="btn">
+            <input type="radio" name="dimensions" id="rad6" value="6">6x6
+          </label>
+          <label class="btn">
+            <input type="radio" name="dimensions" id="rad7" value="7">7x7
+          </label>
+          <label class="btn">
+            <input type="radio" name="dimensions" id="rad8" value="8">8x8
+          </label>
+          <label class="btn">
+            <input type="radio" name="dimensions" id="rad9" value="9">9x9
+          </label>
+        </div>
 
-
-
+        <div class="messages">
+          <h2 id="roundnum" style="color: green">Round: </h2>
+          <h2 id="highScore" style="color: aqua">Record: </h2>
+        </div>
+        <div class="reset">
           <img class="but" src="reset.png" id="r" value="5" >
+        </div>
+  
+  
+        <div class="messages">
+          <div class="wrong-tiles" id="wrongGrid" count="0" value = "0"></div>
+        </div>
+  
+  
+  
+        
+  
+      </form>
+      <body>
+          <div class="tiles"></div>
+          <div class="tiles2"></div>
+      </body>
+      <div class="text" style="color:#42b420;"></div>
+      <script src="main.js" defer></script>
+    </div>
 
-
-
-      <div class="messages">
-        <h2 id="roundnum" style="color: green">Round: </h2>
-        <h2 id="highScore" style="color: aqua">Record: </h2>
-        <h2 style="color:red"id= "wrong">Wrong: 0</h2>
-      </div>
-
-      <div class="messages">
-        <div class="wrong-tiles" id="wrongGrid" count="0" value = "0"></div>
-      </div>
-
-
-
-      
-
-    </form>
-    <body>
-        <div class="tiles"></div>
-        <div class="tiles2"></div>
-    </body>
-    <div class="text" style="color:#42b420;"></div>
-    <script src="main.js" defer></script>
     
 </html>

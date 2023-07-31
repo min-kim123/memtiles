@@ -1,6 +1,5 @@
 let round = 3;//update html, and get from
 let count = 0;
-let wrong = 0;
 
 //$('video').playbackRate=x
 function rand(max) {
@@ -8,10 +7,12 @@ function rand(max) {
 }
 
 function greenScreen(across) {//display at start and between rounds
+
   document.querySelector(".text").style.color = "#42b420";
   console.log("green screen")
   let el = document.querySelectorAll(".tile");
   for (let i = 0; i < across*across; ++i) {
+    //el[i].classList.add('green-tile');
       el[i].style.backgroundColor = "green"
       el[i].style.setProperty('border', '1px solid #2d990c')}
   if (round == 3) {//display "click to advance to next round"
@@ -27,14 +28,8 @@ function buildTile(num, across) {
     element.classList.add("tile");
     element.setAttribute("number", num);
     element.setAttribute("bool", false);
+    
     element.addEventListener("click", function () {
-      //localstorage elements
-      let highScore5 = 3;
-      let highScore6 = 3;
-      let highScore7 = 3;
-      let highScore8 = 3;
-      let highScore9 = 3;
-      let highScoreArr = [highScore5, highScore6, highScore7, highScore8, highScore9];
       // if (element.style.backgroundColor == "aqua") {
       //   element.style.backgroundColor = "#111111"
       // }
@@ -44,25 +39,16 @@ function buildTile(num, across) {
       console.log("clicked")
       //click and nothing happens cases:
       if (element.style.backgroundColor == "red" || element.style.backgroundColor == "aqua") {//click on tile that's already red or blue
-        if (wrong >= 10) {//wrong count is more than 10
-          if (round > highScoreArr[across-5]) {
-            console.log("BEAT HS");
-            document.getElementById("highScore").innerHTML = 'Record: '+ round;
-            localStorage.setItem(highScoreArr[across-5], round);
-            //reset wrong grid
-          }
+        console.log(localStorage.getItem(across.toString()))
+        if (document.getElementById("wrongGrid").getAttribute("count") >= 10) {//wrong count is more than 10
+          //reset wrong tile grid
           let tiles = document.getElementsByClassName("wrong-tile");
             for (let i = 0; i < 10; ++i) {
               tiles[i].style.backgroundColor = '#111111';
           }
           document.getElementById("wrongGrid").setAttribute("count", `0`)
-
-          wrong = 0;
-          document.getElementById("wrong").innerHTML = "Wrong: " +wrong;
           round = 3;
           document.getElementById("roundnum").innerHTML = 'Round: '+ round;
-          let string = 'highScore'.concat(across.toString());
-          buildGrid(across);
           greenScreen(across);
         }
         else {
@@ -106,20 +92,31 @@ function buildTile(num, across) {
         }
       }
       else if(element.getAttribute("bool") == "true") {//if user finds right square
-          count++;
-          console.log(count);
-          console.log("clicked");
-          element.style.backgroundColor = "aqua";
-          element.setAttribute("bool", "false")
-          if (count == round) {//all are clicked
-            console.log("count equals round")
-            round = round+1;
-            console.log("round:" + round);
-            document.getElementById("roundnum").innerHTML = 'Round: '+ round;
-            count = 0;
-            
-            greenScreen(across);
+        //update localstorage record
+
+        count++;
+        console.log(count);
+        console.log("clicked");
+        element.style.backgroundColor = "aqua";
+        element.setAttribute("bool", "false")
+        console.log(count)
+        console.log(round)
+        if (count == round) {//all are clicked
+          console.log(localStorage.getItem(across.toString()))
+          if (round > Number(localStorage.getItem(across.toString()))) {
+            console.log("BEAT HS");
+            localStorage.setItem(across.toString(), round.toString());
+            document.getElementById("highScore").innerHTML = 'Record: '+ localStorage.getItem(across.toString());
+            //reset wrong grid
           }
+          console.log("count equals round")
+          round = round+1;
+          console.log("round:" + round);
+          document.getElementById("roundnum").innerHTML = 'Round: '+ round;
+          count = 0;
+          
+          greenScreen(across);
+        }
       }
       else if (element.style.backgroundColor != "aqua"){//if user clicks wrongs square
         let f = document.getElementById("wrongGrid").getAttribute("count")
@@ -128,9 +125,7 @@ function buildTile(num, across) {
         document.getElementsByClassName("wrong-tile")[f].style.backgroundColor = "red"
 
         element.style.backgroundColor = "red";
-        wrong++;
-        document.getElementById("wrong").innerHTML = "Wrong: " +wrong;
-        if (wrong == 10) {
+        if (st == 10) {
           document.querySelector(".text").innerHTML = "GAME OVER";
           document.querySelector(".text").style.color = "black";
           console.log("green screen")
@@ -213,13 +208,10 @@ function res(evt) {
   console.log(document.getElementById("r"))
   document.getElementById("r").value = evt.target.value;
   console.log("CLICK")
-  console.log(evt.target.value)
   across = evt.target.value;
-  wrong = 0;
+  document.getElementById("highScore").innerHTML = 'Record: '+ localStorage.getItem(across);
   round = 3;
   document.getElementById("roundnum").innerHTML = 'Round: ' + round;
-  document.getElementById("wrong").innerHTML = "Wrong: " + wrong;
-  console.log(across)
   buildGrid(across);
   buildWrongGrid();
   //buildGrid2(across);
@@ -228,6 +220,15 @@ function res(evt) {
 }
 
 function build() {
+  //localstorage elements
+  if (!localStorage.getItem('5')) {
+    localStorage.setItem('5', '3')
+    localStorage.setItem('6', '3')
+    localStorage.setItem('7', '3')
+    localStorage.setItem('8', '3')
+    localStorage.setItem('9', '3')
+  }document.getElementById("highScore").innerHTML = 'Record: '+ localStorage.getItem('5');
+  
   document.getElementById("r").value = 5
   buildWrongGrid();
   console.log('build')
