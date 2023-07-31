@@ -1,7 +1,6 @@
-let round = 3;
+let round = 3;//update html, and get from
 let count = 0;
 let wrong = 0;
-
 
 //$('video').playbackRate=x
 function rand(max) {
@@ -23,15 +22,12 @@ function greenScreen(across) {//display at start and between rounds
   }
 }
 
-function buildTile(num, across, setarr) {
-  console.log(setarr)
-  console.log('buildTile')
+function buildTile(num, across) {
     const element = document.createElement("div");
     element.classList.add("tile");
     element.setAttribute("number", num);
     element.setAttribute("bool", false);
     element.addEventListener("click", function () {
-      console.log(setarr)
       //localstorage elements
       let highScore5 = 3;
       let highScore6 = 3;
@@ -171,7 +167,7 @@ function buildContainer(across) {
   //change this to be a fraction of the width of screen
   setarr = setTiles(across);//set which tiles are correct
   for (let i = 0; i <across*across; ++i) {
-    const tile = buildTile(i, across, setarr);//
+    const tile = buildTile(i, across);//
     tilesContainer.appendChild(tile);
     //change
     let dimension = 550/across;
@@ -201,21 +197,24 @@ function buildContainer2(across) {
   setTiles(across);
 }
 
-function reset(evt) {
-  document.getElementById("r").value = evt.target.value;
-  console.log("CLICK")
-  across = evt.target.value;
-  wrong = 0;
-  round = 3;
-  document.getElementById("roundnum").innerHTML = 'Round: ' + round;
-  document.getElementById("wrong").innerHTML = "Wrong: " + wrong;
-  console.log(across)
-  buildContainer(across);
-  //buildContainer2(across);
-  greenScreen(across);
+function res(evt) {
+  console.log(document.getElementById("r"))
+    document.getElementById("r").value = evt.target.value;
+    console.log("CLICK")
+    console.log(evt.target.value)
+    across = evt.target.value;
+    wrong = 0;
+    round = 3;
+    document.getElementById("roundnum").innerHTML = 'Round: ' + round;
+    document.getElementById("wrong").innerHTML = "Wrong: " + wrong;
+    console.log(across)
+    buildContainer(across);
+    //buildContainer2(across);
+    greenScreen(across);
 }
 
 function build() {
+  document.getElementById("r").value = 5
   console.log('build')
   let across = 5;
   buildContainer(across);
@@ -223,9 +222,13 @@ function build() {
   console.log(document.querySelector("div.buttons"))
 
   document.querySelector("div.buttons").addEventListener("click", function(evt){
-    reset(evt)
+    console.log('button')
+    res(evt)
   });
-  let img = document.images["reset"];
+  document.querySelector("div.but").addEventListener("click", function(evt){
+    console.log('but')
+    res(evt)
+  });
   
   greenScreen(across);
 }
