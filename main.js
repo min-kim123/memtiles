@@ -49,13 +49,20 @@ function buildTile(num, across) {
             console.log("BEAT HS");
             document.getElementById("highScore").innerHTML = 'Record: '+ round;
             localStorage.setItem(highScoreArr[across-5], round);
+            //reset wrong grid
           }
+          let tiles = document.getElementsByClassName("wrong-tile");
+            for (let i = 0; i < 10; ++i) {
+              tiles[i].style.backgroundColor = '#111111';
+          }
+          document.getElementById("wrongGrid").setAttribute("count", `0`)
+
           wrong = 0;
           document.getElementById("wrong").innerHTML = "Wrong: " +wrong;
           round = 3;
           document.getElementById("roundnum").innerHTML = 'Round: '+ round;
           let string = 'highScore'.concat(across.toString());
-          buildContainer(across);
+          buildGrid(across);
           greenScreen(across);
         }
         else {
@@ -115,6 +122,11 @@ function buildTile(num, across) {
           }
       }
       else if (element.style.backgroundColor != "aqua"){//if user clicks wrongs square
+        let f = document.getElementById("wrongGrid").getAttribute("count")
+        let st = (parseInt(f)+1).toString();
+        document.getElementById("wrongGrid").setAttribute("count", `${st}`)
+        document.getElementsByClassName("wrong-tile")[f].style.backgroundColor = "red"
+
         element.style.backgroundColor = "red";
         wrong++;
         document.getElementById("wrong").innerHTML = "Wrong: " +wrong;
@@ -128,6 +140,7 @@ function buildTile(num, across) {
               el[i].style.setProperty('border', '1px solid red')
           }
         }
+        
       }
     });
 
@@ -155,8 +168,9 @@ function setTiles(across) {//set specified number of random tiles to true
   return setarr;
 }
 
-function buildContainer(across) {
-  console.log('buildContainer')
+function buildGrid(across) {
+  //MAIN GRID
+  console.log('buildGrid')
   let tilesContainer = document.querySelector(".tiles");
   while(tilesContainer.firstElementChild) {
     tilesContainer.firstElementChild.remove();
@@ -167,57 +181,58 @@ function buildContainer(across) {
   //change this to be a fraction of the width of screen
   setarr = setTiles(across);//set which tiles are correct
   for (let i = 0; i <across*across; ++i) {
-    const tile = buildTile(i, across);//
+    let tile = buildTile(i, across);//
     tilesContainer.appendChild(tile);
     //change
     let dimension = 550/across;
     tile.style.setProperty('height', ' '+ dimension+ 'px');
   } 
+  
 }
 
-function buildContainer2(across) {
-  across = 60;
-  console.log('buildContainer')
-  let tilesContainer = document.querySelector(".tiles2");
-  while(tilesContainer.firstElementChild) {
-    tilesContainer.firstElementChild.remove();
+function buildWrongGrid() {
+  //WRONG TILES GRID
+  let wrongTilesContainer = document.querySelector(".wrong-tiles");
+  while(wrongTilesContainer.firstElementChild) {
+    wrongTilesContainer.firstElementChild.remove();
   }
-  console.log(across)
-  let dimension = 550/across;
-  tilesContainer.style.setProperty('grid-template-columns', 'repeat(' + across + ', '+dimension+ 'px)');
-  //change this to be a fraction of the width of screen
+  const element = document.createElement("div");
+  
+  for (let i = 0; i <10; ++i) {
+    const element = document.createElement("div");
+    element.classList.add("wrong-tile");
+    element.setAttribute("num", i);
+    let tile = element;
+    wrongTilesContainer.appendChild(tile);
+  } 
 
-  for (let i = 0; i <across*across; ++i) {
-    const tile = buildTile(i, across);
-    tilesContainer.appendChild(tile);
-    //change
-    let dimension = 550/across;
-    tile.style.setProperty('height', ' '+ dimension+ 'px');
-  }
-  setTiles(across);
+  document.getElementById("wrongGrid").setAttribute("count", `0`)
 }
 
 function res(evt) {
   console.log(document.getElementById("r"))
-    document.getElementById("r").value = evt.target.value;
-    console.log("CLICK")
-    console.log(evt.target.value)
-    across = evt.target.value;
-    wrong = 0;
-    round = 3;
-    document.getElementById("roundnum").innerHTML = 'Round: ' + round;
-    document.getElementById("wrong").innerHTML = "Wrong: " + wrong;
-    console.log(across)
-    buildContainer(across);
-    //buildContainer2(across);
-    greenScreen(across);
+  document.getElementById("r").value = evt.target.value;
+  console.log("CLICK")
+  console.log(evt.target.value)
+  across = evt.target.value;
+  wrong = 0;
+  round = 3;
+  document.getElementById("roundnum").innerHTML = 'Round: ' + round;
+  document.getElementById("wrong").innerHTML = "Wrong: " + wrong;
+  console.log(across)
+  buildGrid(across);
+  buildWrongGrid();
+  //buildGrid2(across);
+
+  greenScreen(across);
 }
 
 function build() {
   document.getElementById("r").value = 5
+  buildWrongGrid();
   console.log('build')
   let across = 5;
-  buildContainer(across);
+  buildGrid(across);
   document.getElementById("roundnum").innerHTML = 'Round: '+ round;
   console.log(document.querySelector("div.buttons"))
 
@@ -225,7 +240,7 @@ function build() {
     console.log('button')
     res(evt)
   });
-  document.querySelector("div.but").addEventListener("click", function(evt){
+  document.querySelector("img.but").addEventListener("click", function(evt){
     console.log('but')
     res(evt)
   });
@@ -235,3 +250,24 @@ function build() {
 
 build();//start
 console.log ("finish")
+// function buildGrid2(across) {
+//   across = 60;
+//   console.log('buildGrid')
+//   let tilesContainer = document.querySelector(".tiles2");
+//   while(tilesContainer.firstElementChild) {
+//     tilesContainer.firstElementChild.remove();
+//   }
+//   console.log(across)
+//   let dimension = 550/across;
+//   tilesContainer.style.setProperty('grid-template-columns', 'repeat(' + across + ', '+dimension+ 'px)');
+//   //change this to be a fraction of the width of screen
+
+//   for (let i = 0; i <across*across; ++i) {
+//     const tile = buildTile(i, across);
+//     tilesContainer.appendChild(tile);
+//     //change
+//     let dimension = 550/across;
+//     tile.style.setProperty('height', ' '+ dimension+ 'px');
+//   }
+//   setTiles(across);
+// }

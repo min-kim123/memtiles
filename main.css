@@ -24,25 +24,38 @@ img {
  
 }
 
+.wrong-tiles {
+
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+}
+
 .tiles2 {
   margin: auto;
   width: max-content;
   display: grid;
-  grid-template-columns: repeat(4, 100px);
+  grid-template-columns: repeat(4, 48px);
 
 }
 
 .tile {
-    height: 100px;
-    background: #111111;
-    border: 1px solid #444444;
-    cursor: pointer;
-}
-
-
-.btn {
+  height: 100px;
+  background: #111111;
+  border: 1px solid #444444;
   cursor: pointer;
 }
+
+.wrong-tile {
+  height: 48px;
+  background: #111111;
+  border: 1px solid #444444;
+}
+
+
+.btn, .but {
+  cursor: pointer;
+}
+
 
 .text {
   position: absolute;
@@ -52,8 +65,13 @@ img {
 
 }
 
+.messages {
+  width: 50%;
+  float: left;
+
+}
+
 /*todo
 - max for wrong
-- make grid size fixed
-- "game over! click to restart" when wrong max is reached
+- grid for wrongs
 */
