@@ -2,13 +2,34 @@ body {
     background: #333333;
     margin:0;
 }
+button {
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+}
 
+button:hover {
+  transform: rotate(360deg);
+}
+img {
+  width: 70px;
+  height: 70px;
+}
 .tiles {
     margin: auto;
     width: max-content;
     display: grid;
     grid-template-columns: repeat(4, 100px);
  
+}
+
+.tiles2 {
+  margin: auto;
+  width: max-content;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+
 }
 
 .tile {
@@ -18,14 +39,21 @@ body {
     cursor: pointer;
 }
 
+
 .btn {
   cursor: pointer;
+}
+
+.text {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
 }
 
 /*todo
 - max for wrong
 - make grid size fixed
-- add text to green screen at start saying "click to start"
 - "game over! click to restart" when wrong max is reached
-- add local storage
 */

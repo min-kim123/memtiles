@@ -12,31 +12,34 @@
     </h1>
     
     <form>
-      <div class="btn-dimension" data-toggle="buttons">
-        <label id='RADIO' class="btn btn-primary">
+      <div class="buttons">
+        <label class="btn">
           <input type="radio" name="dimensions" id="rad5" value="5" checked>5x5
         </label>
-        <label class="btn btn-primary">
+        <label class="btn">
           <input type="radio" name="dimensions" id="rad6" value="6">6x6
         </label>
-        <label class="btn btn-primary">
+        <label class="btn">
           <input type="radio" name="dimensions" id="rad7" value="7">7x7
         </label>
-        <label class="btn btn-primary">
+        <label class="btn">
           <input type="radio" name="dimensions" id="rad8" value="8">8x8
         </label>
-        <label class="btn btn-primary">
+        <label class="btn">
           <input type="radio" name="dimensions" id="rad9" value="9">9x9
         </label>
+        
       </div>
+      <img onclick=name="jsbutton" src="reset.png" width="110" alt="javascript button" id="r" value="5">
       <div>
         <div class="messages">
           <h2 id="roundnum" style="color: green">Round: </h2>
-          <h2 id="highScore" style="color: aqua">High Score: </h2>
+          <h2 id="highScore" style="color: aqua">Record: </h2>
         </div>
         <div class="wrong-tiles" style="width:300px; float:right;">asfg</div>
         <h2 style="color:red"id= "wrong">Wrong: 0</h2>
       </div>
+      
 
     </form>
     <body>
@@ -44,4 +47,5 @@
         <div class="tiles2"></div>
     </body>
     <div class="text" style="color:#42b420;"></div>
+    
 </html>
