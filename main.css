@@ -7,6 +7,13 @@ body {
   margin: auto;
   padding: 50px;
   background: #222222;
+  border-radius: 60px;
+}
+
+.text {
+  position: absolute;
+  user-select: none;
+  font-family: "PT Sans", Calibri, Tahoma, sans-serif;
 }
 
 button {
@@ -29,7 +36,6 @@ img {
     display: grid;
     grid-template-columns: repeat(4, 100px);
     gap: 3px;
- 
 }
 
 .tile {
@@ -58,9 +64,6 @@ img {
   width: max-content;
   display: grid;
   grid-template-columns: repeat(4, 48px);
-
-
-
 }
 
 
@@ -75,17 +78,14 @@ img {
   cursor: pointer;
 }
 
-.text {
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-
-}
-
 .messages {
   width: 40%;
   float: left;
+  font-family: "PT Sans", Calibri, Tahoma, sans-serif;
+}
+
+h1{
+  font-family: "PT Sans", Calibri, Tahoma, sans-serif;
 }
 
 .reset {

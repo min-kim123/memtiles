@@ -7,6 +7,7 @@ function rand(max) {
 }
 
 function greenScreen(across) {//display at start and between rounds
+  count = 0;
 
   document.querySelector(".text").style.color = "#42b420";
   console.log("green screen")
@@ -16,10 +17,10 @@ function greenScreen(across) {//display at start and between rounds
       el[i].style.backgroundColor = "green"
       el[i].style.setProperty('border', '1px solid #2d990c')}
   if (round == 3) {//display "click to advance to next round"
-    document.querySelector(".text").innerHTML = "CLICK TO START";
+    document.querySelector(".text").innerHTML = "CLICK ANY GREEN TILE TO START";
   }
   else if (round == 4) {
-    document.querySelector(".text").innerHTML = "CLICK TO CONTINUE";
+    document.querySelector(".text").innerHTML = "CLICK ANY GREEN TILE TO CONTINUE";
   }
 }
 
