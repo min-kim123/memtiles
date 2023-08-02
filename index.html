@@ -4,54 +4,56 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width", intial-scale="1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Memory Tiles</title>
+        <title > Memory Tiles</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://db.onlinewebfonts.com/c/527c5ab608cab860a6aae8ce02e14b0e?family=Calibri+Bold" rel="stylesheet">
         <link rel="stylesheet" href="main.css">
     </head>
-    <h1 style="color:aqua" > <center>Memory Tiles</center>
-    </h1>
-    <div class="box" >
-      <form>
-        <div class="buttons">
-          <label class="btn">
-            <input type="radio" name="dimensions" id="rad5" value="5" checked>5x5
-          </label>
-          <label class="btn">
-            <input type="radio" name="dimensions" id="rad6" value="6">6x6
-          </label>
-          <label class="btn">
-            <input type="radio" name="dimensions" id="rad7" value="7">7x7
-          </label>
-          <label class="btn">
-            <input type="radio" name="dimensions" id="rad8" value="8">8x8
-          </label>
-          <label class="btn">
-            <input type="radio" name="dimensions" id="rad9" value="9">9x9
-          </label>
-        </div>
+      <body>
+        <h1 style="color:aqua; font-family:Calibri Bold"> <center>Memory Tiles</center>
+        </h1>
+        <div class="box" >
+          <div id="left">
+            <form>
+              <div class="radio">
+                <label class="btn" >
+                  <input label="5x5"type="radio" name="dimensions" id="rad5" value="5" checked>
+                </label>
+                <label class="btn">
+                  <input label="6x6"type="radio" name="dimensions" id="rad6" value="6">
+                </label>
+                <label class="btn">
+                  <input label="7x7"type="radio" name="dimensions" id="rad7" value="7">
+                </label>
+                <label class="btn">
+                  <input label="8x8"type="radio" name="dimensions" id="rad8" value="8">
+                </label>
+                <label class="btn">
+                  <input label="9x9"type="radio" name="dimensions" id="rad9" value="9">
+                </label>
+              </div>
+            </form>
+            <div class="messages">
+              <h2 class="round"id="roundnum" style="color: rgb(27, 165, 27)">Round: </h2>
+              <div class="reset round" ><img class="but" src="reset.png" id="r" value="5" ></div>
+              <h2 id="highScore" style="color: aqua; top:-10px">Record: </h2>
+            </div>
 
-        <div class="messages">
-          <h2 id="roundnum" style="color: rgb(27, 165, 27)">Round: </h2>
-          <h2 id="highScore" style="color: aqua">Record: </h2>
-        </div>
-        <div class="reset">
-          <img class="but" src="reset.png" id="r" value="5" >
-        </div>
-  
-  
-        <div class="messages">
+          </div>
+
           <div class="wrong-tiles" id="wrongGrid" count="0" value = "0"></div>
-        </div>
-        
-  
-      </form>
-      <body >
-        <div class="green-box">
+            
           <div class="tiles"></div>
-          <div class="tiles2"></div>
+          <div class="text" style="color:#42b420;" value="0"></div>
         </div>
-        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       </body>
-      <div class="text" style="color:#42b420;"></div>
+  
       <script src="main.js" defer></script>
     </div>
+    <footer>
+      Min Kim 2023
+    </footer>
 </html>

@@ -1,4 +1,4 @@
-let round = 3;//update html, and get from
+let round = 3;
 let count = 0;
 
 //$('video').playbackRate=x
@@ -16,11 +16,15 @@ function greenScreen(across) {//display at start and between rounds
     //el[i].classList.add('green-tile');
       el[i].style.backgroundColor = "green"
       el[i].style.setProperty('border', '1px solid #2d990c')}
-  if (round == 3) {//display "click to advance to next round"
-    document.querySelector(".text").innerHTML = "CLICK ANY GREEN TILE TO START";
+  if (document.querySelector(".text").value == 1) {
+    document.querySelector(".text").innerHTML = "CONGRATS! YOU MAXED OUT THE AMOUNT OF ROUNDS ";
+    document.querySelector(".text").value = 0;
   }
   else if (round == 4) {
     document.querySelector(".text").innerHTML = "CLICK ANY GREEN TILE TO CONTINUE";
+  }
+  else if (round == 3) {//display "click to advance to next round"
+    document.querySelector(".text").innerHTML = "CLICK ANY GREEN TILE TO START";
   }
 }
 
@@ -31,12 +35,6 @@ function buildTile(num, across) {
     element.setAttribute("bool", false);
     
     element.addEventListener("click", function () {
-      // if (element.style.backgroundColor == "aqua") {
-      //   element.style.backgroundColor = "#111111"
-      // }
-      // else {
-      //   element.style.backgroundColor = "aqua"
-      // }
       console.log("clicked")
       //click and nothing happens cases:
       if (element.style.backgroundColor == "red" || element.style.backgroundColor == "aqua") {//click on tile that's already red or blue
@@ -59,7 +57,7 @@ function buildTile(num, across) {
       else if (element.style.backgroundColor == "green") {//it is green , start round
         setarr=setTiles(across);
         console.log("clicked wehn green")
-        document.querySelector(".text").innerHTML = "";
+        document.querySelector(".text").innerHTML = "       ";
         //get rid of green
         let el = document.querySelectorAll(".tile");
         for (let i = 0; i < across*across; ++i) {
@@ -103,6 +101,7 @@ function buildTile(num, across) {
         console.log(count)
         console.log(round)
         if (count == round) {//all are clicked
+          //if it's a high score
           console.log(localStorage.getItem(across.toString()))
           if (round > Number(localStorage.getItem(across.toString()))) {
             console.log("BEAT HS");
@@ -110,13 +109,27 @@ function buildTile(num, across) {
             document.getElementById("highScore").innerHTML = 'Record: '+ localStorage.getItem(across.toString());
             //reset wrong grid
           }
+          //if it's the max round for the level
+          
           console.log("count equals round")
           round = round+1;
+          console.log(round)
           console.log("round:" + round);
           document.getElementById("roundnum").innerHTML = 'Round: '+ round;
           count = 0;
           
           greenScreen(across);
+          if (round == Math.floor(across*across/2)) {
+            console.log(round)
+            document.getElementById('rad6').checked = true;
+            if (across != 9) {
+              document.querySelector(".text").value = 1;
+              res(across+1);
+            }
+            else {
+              //you win!
+            }
+          }
         }
       }
       else if (element.style.backgroundColor != "aqua"){//if user clicks wrongs square
@@ -127,8 +140,8 @@ function buildTile(num, across) {
 
         element.style.backgroundColor = "red";
         if (st == 10) {
-          document.querySelector(".text").innerHTML = "GAME OVER";
-          document.querySelector(".text").style.color = "black";
+          document.querySelector(".text").innerHTML = "GAME OVER- CLICK ANY TILE TO RESTART";
+          document.querySelector(".text").style.color = "red";
           console.log("green screen")
           let el = document.querySelectorAll(".tile");
           for (let i = 0; i < across*across; ++i) {
@@ -172,15 +185,14 @@ function buildGrid(across) {
     tilesContainer.firstElementChild.remove();
   }
   console.log(across)
-  let dimension = 550/across;
+  let dimension = 530/across;
   tilesContainer.style.setProperty('grid-template-columns', 'repeat(' + across + ', '+dimension+ 'px)');
-  //change this to be a fraction of the width of screen
   setarr = setTiles(across);//set which tiles are correct
   for (let i = 0; i <across*across; ++i) {
     let tile = buildTile(i, across);//
     tilesContainer.appendChild(tile);
     //change
-    let dimension = 550/across;
+    let dimension = 530/across;
     tile.style.setProperty('height', ' '+ dimension+ 'px');
   } 
   
@@ -205,11 +217,10 @@ function buildWrongGrid() {
   document.getElementById("wrongGrid").setAttribute("count", `0`)
 }
 
-function res(evt) {
+function res(across) {
   console.log(document.getElementById("r"))
-  document.getElementById("r").value = evt.target.value;
+  document.getElementById("r").value = across
   console.log("CLICK")
-  across = evt.target.value;
   document.getElementById("highScore").innerHTML = 'Record: '+ localStorage.getItem(across);
   round = 3;
   document.getElementById("roundnum").innerHTML = 'Round: ' + round;
@@ -236,15 +247,24 @@ function build() {
   let across = 5;
   buildGrid(across);
   document.getElementById("roundnum").innerHTML = 'Round: '+ round;
-  console.log(document.querySelector("div.buttons"))
+  console.log(document.querySelector("div.radio"))
+  let els = document.getElementsByTagName("input")
+  console.log(els)
+  for (let i = 0; i < 5; ++i) {
+    els[i].addEventListener("click", function(evt){
+      console.log('button')
+      across = Number(evt.target.value);
+      console.log(across)
+      res(across)
+  
+    });
+  }
 
-  document.querySelector("div.buttons").addEventListener("click", function(evt){
-    console.log('button')
-    res(evt)
-  });
+  
   document.querySelector("img.but").addEventListener("click", function(evt){
     console.log('but')
-    res(evt)
+    across = Number(evt.target.value);
+    res(across)
   });
   
   greenScreen(across);
@@ -252,24 +272,3 @@ function build() {
 
 build();//start
 console.log ("finish")
-// function buildGrid2(across) {
-//   across = 60;
-//   console.log('buildGrid')
-//   let tilesContainer = document.querySelector(".tiles2");
-//   while(tilesContainer.firstElementChild) {
-//     tilesContainer.firstElementChild.remove();
-//   }
-//   console.log(across)
-//   let dimension = 550/across;
-//   tilesContainer.style.setProperty('grid-template-columns', 'repeat(' + across + ', '+dimension+ 'px)');
-//   //change this to be a fraction of the width of screen
-
-//   for (let i = 0; i <across*across; ++i) {
-//     const tile = buildTile(i, across);
-//     tilesContainer.appendChild(tile);
-//     //change
-//     let dimension = 550/across;
-//     tile.style.setProperty('height', ' '+ dimension+ 'px');
-//   }
-//   setTiles(across);
-// }
