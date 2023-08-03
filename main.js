@@ -8,16 +8,15 @@ function rand(max) {
 
 function greenScreen(across) {//display at start and between rounds
   count = 0;
-
+  //document.querySelector(".tiles").classList.add('green-tile');
   document.querySelector(".text").style.color = "#42b420";
   console.log("green screen")
   let el = document.querySelectorAll(".tile");
   for (let i = 0; i < across*across; ++i) {
-    //el[i].classList.add('green-tile');
       el[i].style.backgroundColor = "green"
       el[i].style.setProperty('border', '1px solid #2d990c')}
   if (document.querySelector(".text").value == 1) {
-    document.querySelector(".text").innerHTML = "CONGRATS! YOU MAXED OUT THE AMOUNT OF ROUNDS ";
+    document.querySelector(".text").innerHTML = "GREAT JOB, YOU MAXED OUT THE AMOUNT OF ROUNDS ";
     document.querySelector(".text").value = 0;
   }
   else if (round == 4) {
@@ -55,6 +54,7 @@ function buildTile(num, across) {
         }
       }
       else if (element.style.backgroundColor == "green") {//it is green , start round
+        document.querySelector(".tiles").classList.remove('green-tile');
         setarr=setTiles(across);
         console.log("clicked wehn green")
         document.querySelector(".text").innerHTML = "       ";
@@ -271,4 +271,3 @@ function build() {
 }
 
 build();//start
-console.log ("finish")
