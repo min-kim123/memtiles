@@ -16,8 +16,11 @@ body {
 
 h1 {
   font-family: "PT Sans", Calibri, Tahoma, sans-serif;
+  margin-bottom: .2%;
   font-size:45px;
+  color: aqua;
 }
+
 h2 {
   font-size: 28px;
   position: relative;
@@ -49,9 +52,6 @@ button {
   background-color: inherit;
 }
 
-button:hover {
-  transform: rotate(360deg);
-}
 img {
   width: 85px;
   height: 85px;
@@ -111,11 +111,7 @@ img {
   font-family: "PT Sans", Calibri, Tahoma, sans-serif;
 }
 
-h1{
-  color:aqua;
-  margin-bottom: .2%;
-  font-family: "PT Sans", Calibri, Tahoma, sans-serif;
-}
+
 #left{
   float:left;
 }
