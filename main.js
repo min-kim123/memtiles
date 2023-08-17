@@ -104,7 +104,7 @@ function buildTile(num, across) {
             "Record: " + localStorage.getItem(across.toString());
           //reset wrong grid
         }
-        
+
         round = round + 1;
         document.getElementById("roundnum").innerHTML = "Round: " + round;
         count = 0;
@@ -116,8 +116,7 @@ function buildTile(num, across) {
             document.querySelector(".text").value = 1;
             buildFromScratch(across + 1);
           } else {
-            document.querySelector(".text").innerHTML =
-          "YOU WIN";
+            document.querySelector(".text").innerHTML = "YOU WIN";
           }
         }
       }

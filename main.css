@@ -1,12 +1,13 @@
-
-body {
-    background: #333333;
+html {
+  background: #333333;
 }
+
+
 .box {
-  width: max-content;
+  position: relative;
+  width: 100%;
   max-width: 600px;
-  max-height: 750px;
-  margin: auto;
+
   padding-top: 20px;
   padding-bottom: 45px;
   background: #222222;
@@ -14,9 +15,9 @@ body {
 }
 
 h1 {
-  font-family: 'PT Sans', sans-serif;
-  margin-bottom: .2%;
-  font-size:45px;
+  font-family: "PT Sans", sans-serif;
+  margin-bottom: 0.2%;
+  font-size: 45px;
   color: aqua;
 }
 
@@ -28,20 +29,18 @@ h2 {
   left: 28px;
 }
 
-
 .text {
-  position: absolute;
-  font-family: 'PT Sans', sans-serif;
+  position: relative;
+  font-family: "PT Sans", sans-serif;
   padding-left: 28px;
   user-select: none;
-
 }
 
 footer {
   position: fixed;
-  bottom:0;
+  bottom: 0;
   right: 0;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 button {
@@ -56,16 +55,15 @@ img {
   height: 85px;
 }
 .tiles {
+  width: 100%;
   margin: auto;
-  width: max-content;
   display: grid;
 
-  grid-template-columns: repeat(4, 90px);
+  grid-template-columns: repeat(4, auto);
   gap: 3px;
 }
 
 .tile {
-  height: 90px;
   background: #111111;
   border: 3px solid #444444;
   cursor: pointer;
@@ -77,20 +75,16 @@ img {
   border-radius: 3px;
 }
 
-
-
 .wrong-tiles {
-  margin-top: 25px;
 
+  margin: 10px;
   float: left;
-  margin-left: 50px;
   display: grid;
   grid-template-columns: repeat(5, 50px);
   gap: 2px;
   padding: 2px;
   border-radius: 8px;
 }
-
 
 .wrong-tile {
   height: 48px;
@@ -99,26 +93,25 @@ img {
   border-radius: 5px;
 }
 
-
-.btn, .but {
+.btn,
+.but {
   cursor: pointer;
 }
 
 .messages {
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
-
-#left{
-  float:left;
+#left {
+  float: left;
 }
 
 .round {
-  width: 50%
+  width: 50%;
 }
 
 .reset {
-  width: 10%;
+
   margin-right: 15px;
   margin-top: 15px;
   float: right;
@@ -126,41 +119,38 @@ img {
 
 .radio {
   left: 28px;
-	background: #454857;
+  background: #454857;
   max-width: 500px;
-	padding: 4px;
-	border-radius: 3px;
-	box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3);
-	position: relative;
+  padding: 4px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3);
+  position: relative;
 }
 
 .radio input {
-
-	height: 100%;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	outline: none;
-	cursor: pointer;
-	border-radius: 2px;
-	padding: 4px 8px;
-	background: #454857;
-	color: #bdbdbdbd;
-	font-size: 14px;
-	font-family: 'PT Sans', sans-serif;
-	transition: all 100ms linear;
+  height: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 4px 8px;
+  background: #454857;
+  color: #bdbdbdbd;
+  font-size: 14px;
+  font-family: "PT Sans", sans-serif;
+  transition: all 100ms linear;
 }
 
 .radio input:checked {
-	background-image: linear-gradient(180deg, #95d891, #74bbad);
-	color: #fff;
-  
+  background-image: linear-gradient(180deg, #95d891, #74bbad);
+  color: #fff;
 }
 
 .radio input:before {
-	content: attr(label);
-	display: inline-block;
-	text-align: center;
-	width: 100%;
+  content: attr(label);
+  display: inline-block;
+  text-align: center;
+  width: 100%;
 }
-
