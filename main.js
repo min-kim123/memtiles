@@ -58,7 +58,7 @@ function buildTile(num, across) {
       }
     } else if (element.style.backgroundColor == "green") {
       //it is green , start round
-      document.querySelector(".tiles").classList.remove("green-tile");
+      document.querySelector(".tiles-container").classList.remove("green-tile");
       setarr = setTiles(across);
       document.querySelector(".text").innerHTML = "       ";
       //get rid of green
@@ -175,22 +175,20 @@ function resetGrid(across) {
 
 function buildGrid(across) {
   //MAIN GRID
-  let tilesContainer = document.querySelector(".tiles");
+  let tilesContainer = document.querySelector(".tiles-container");
   while (tilesContainer.firstElementChild) {
     tilesContainer.firstElementChild.remove();
   }
   let dimension = 530 / across;
   tilesContainer.style.setProperty(
     "grid-template-columns",
-    "repeat(" + across + ", " + dimension + "px)"
+    "repeat(" + across + ", 1fr)"
   );
   setarr = setTiles(across); //set which tiles are correct
   for (let i = 0; i < across * across; ++i) {
     let tile = buildTile(i, across); //
     tilesContainer.appendChild(tile);
-    //change
-    let dimension = 530 / across;
-    tile.style.setProperty("height", " " + dimension + "px");
+
   }
 }
 

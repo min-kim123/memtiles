@@ -2,37 +2,43 @@ html {
   background: #333333;
 }
 
-
 .box {
-  position: relative;
-  width: 100%;
+  width: 100vh;
   max-width: 600px;
-
+  margin: auto;
   padding-top: 20px;
   padding-bottom: 45px;
   background: #222222;
   border-radius: 50px;
 }
 
+.flex {
+  margin: 1vh;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid greenyellow;
+}
+
+#side {
+  border: 2px solid blueviolet;
+}
+
 h1 {
+  text-align: center;
+  margin: auto;
   font-family: "PT Sans", sans-serif;
-  margin-bottom: 0.2%;
+  margin-bottom: 2vh;
   font-size: 45px;
   color: aqua;
 }
 
 h2 {
   font-size: 28px;
-  position: relative;
-  padding: 0px;
   height: 25px;
-  left: 28px;
 }
 
 .text {
-  position: relative;
   font-family: "PT Sans", sans-serif;
-  padding-left: 28px;
   user-select: none;
 }
 
@@ -54,11 +60,15 @@ img {
   width: 85px;
   height: 85px;
 }
-.tiles {
-  width: 100%;
-  margin: auto;
-  display: grid;
 
+.align {
+  border: 2px solid greenyellow;
+  
+
+}
+.tiles-container {
+  border: 2px solid blue;
+  display: grid;
   grid-template-columns: repeat(4, auto);
   gap: 3px;
 }
@@ -68,6 +78,7 @@ img {
   border: 3px solid #444444;
   cursor: pointer;
   border-radius: 3px;
+  aspect-ratio:1;
 }
 
 .green-tile {
@@ -76,9 +87,7 @@ img {
 }
 
 .wrong-tiles {
-
   margin: 10px;
-  float: left;
   display: grid;
   grid-template-columns: repeat(5, 50px);
   gap: 2px;
@@ -106,25 +115,18 @@ img {
   float: left;
 }
 
-.round {
-  width: 50%;
-}
-
 .reset {
-
   margin-right: 15px;
   margin-top: 15px;
   float: right;
 }
 
 .radio {
-  left: 28px;
   background: #454857;
   max-width: 500px;
   padding: 4px;
   border-radius: 3px;
   box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3);
-  position: relative;
 }
 
 .radio input {

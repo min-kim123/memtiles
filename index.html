@@ -9,42 +9,49 @@
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="main.css">
     </head>
+    <h1>
+      Memory Tiles
+    </h1>
       <body>
-        <h1> <center>Memory Tiles</center>
-        </h1>
         <div class="box" >
-          <div id="left">
-            <form>
-              <div class="radio">
-                <label class="btn" >
-                  <input label="5x5"type="radio" name="dimensions" id="rad5" value="5" checked>
-                </label>
-                <label class="btn">
-                  <input label="6x6"type="radio" name="dimensions" id="rad6" value="6">
-                </label>
-                <label class="btn">
-                  <input label="7x7"type="radio" name="dimensions" id="rad7" value="7">
-                </label>
-                <label class="btn">
-                  <input label="8x8"type="radio" name="dimensions" id="rad8" value="8">
-                </label>
-                <label class="btn">
-                  <input label="9x9"type="radio" name="dimensions" id="rad9" value="9">
-                </label>
+          <div class="flex">
+            <div id="side">
+              <form>
+                <div class="radio">
+                  <label class="btn" >
+                    <input label="5x5"type="radio" name="dimensions" id="rad5" value="5" checked>
+                  </label>
+                  <label class="btn">
+                    <input label="6x6"type="radio" name="dimensions" id="rad6" value="6">
+                  </label>
+                  <label class="btn">
+                    <input label="7x7"type="radio" name="dimensions" id="rad7" value="7">
+                  </label>
+                  <label class="btn">
+                    <input label="8x8"type="radio" name="dimensions" id="rad8" value="8">
+                  </label>
+                  <label class="btn">
+                    <input label="9x9"type="radio" name="dimensions" id="rad9" value="9">
+                  </label>
+                </div>
+              </form>
+              <div class="reset round" ><img class="but" src="reset.png" id="r" value="5" ></div>
+              <div class="messages">
+                <h2 id="roundnum" style="color: rgb(27, 165, 27)">Round: </h2>
+                
+                <h2 id="highScore" style="color: aqua; ">Record: </h2>
               </div>
-            </form>
-            <div class="reset round" ><img class="but" src="reset.png" id="r" value="5" ></div>
-            <div class="messages">
-              <h2 class="round"id="roundnum" style="color: rgb(27, 165, 27)">Round: </h2>
-              
-              <h2 id="highScore" style="color: aqua; ">Record: </h2>
+  
             </div>
-
+            <div id="side">
+              <div class="wrong-tiles" id="wrongGrid" count="0" value = "0"></div>
+            </div>
           </div>
-          <div class="wrong-tiles" id="wrongGrid" count="0" value = "0"></div>
-            
-          <div class="tiles"></div>
-          <div class="text" style="color:#42b420;" value="0"></div>
+            <div class="align">
+              <div class="tiles-container"></div>
+              <div class="text" style="color:#42b420;" value="0"></div>
+            </div>
+          
         </div>
         
       </body>
