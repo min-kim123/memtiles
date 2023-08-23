@@ -3,8 +3,9 @@ html {
 }
 
 .box {
-  width: 100vh;
+  width: 90vh;
   max-width: 600px;
+
   margin: auto;
   padding-top: 20px;
   padding-bottom: 45px;
@@ -16,16 +17,17 @@ html {
   margin: 1vh;
   display: flex;
   justify-content: space-between;
-  border: 2px solid greenyellow;
+
+  width: 95%;
+  margin: auto;
 }
 
 #side {
-  border: 2px solid blueviolet;
+
 }
 
 h1 {
   text-align: center;
-  margin: auto;
   font-family: "PT Sans", sans-serif;
   margin-bottom: 2vh;
   font-size: 45px;
@@ -58,16 +60,15 @@ button {
 
 img {
   width: 85px;
-  height: 85px;
+  aspect-ratio: 1;
 }
 
 .align {
-  border: 2px solid greenyellow;
-  
-
+  margin:auto;
+  width: 95%;
 }
+
 .tiles-container {
-  border: 2px solid blue;
   display: grid;
   grid-template-columns: repeat(4, auto);
   gap: 3px;
@@ -87,7 +88,7 @@ img {
 }
 
 .wrong-tiles {
-  margin: 10px;
+  margin-top: 2%;
   display: grid;
   grid-template-columns: repeat(5, 50px);
   gap: 2px;
@@ -123,7 +124,8 @@ img {
 
 .radio {
   background: #454857;
-  max-width: 500px;
+  margin-top:3%;
+  max-width: 100%;
   padding: 4px;
   border-radius: 3px;
   box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3);
