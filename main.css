@@ -1,18 +1,14 @@
 html {
   background: #333333;
 }
-
 .box {
-  width: 90vh;
+  width: 90%;
   max-width: 600px;
-
-  margin: auto;
-  padding-top: 20px;
-  padding-bottom: 45px;
+  padding: 20px 10px;
   background: #222222;
   border-radius: 50px;
+  align-self: center; /* Add this to center the box while radio stays left-aligned */
 }
-
 .flex {
   margin: 1vh;
   display: flex;
@@ -94,6 +90,7 @@ img {
   gap: 2px;
   padding: 2px;
   border-radius: 8px;
+  margin-bottom:10px;
 }
 
 .wrong-tile {
@@ -110,6 +107,7 @@ img {
 
 .messages {
   font-family: "PT Sans", sans-serif;
+  margin-top:-20px;
 }
 
 #left {
@@ -118,18 +116,18 @@ img {
 
 .reset {
   margin-right: 15px;
-  margin-top: 15px;
+  margin-left:-10px;
   float: right;
 }
 
 .radio {
-  background: #454857;
-  margin-top:3%;
-  width: 100%;
+  margin: 0; /* Remove default margins */
   padding: 4px;
+  background: #454857;
+  width: auto; /* Prevent unnecessary width constraints */
   border-radius: 3px;
-  box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3);
 }
+
 
 .radio input {
   height: 100%;
@@ -157,4 +155,14 @@ img {
   display: inline-block;
   text-align: center;
   width: 100%;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Change from center to flex-start */
+  width: 600px; /* Fixed the '500' to '500px' */
+  gap: 20px;
+  margin: 0 auto; /* Add this to keep the game container itself centered */
 }

@@ -1,66 +1,62 @@
 <!DOCTYPE html>
-<htmll lang=""en>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=1" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title > Memory Tiles</title><link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="main.css">
-        
-    </head>
-    <h1>
-      Memory Tiles
-    </h1>
-      <body>
-        <div class="box" >
-          <div class="flex">
-            <div id="side">
-              <form>
-                <div class="radio">
-                  <label class="btn" >
-                    <input label="5x5"type="radio" name="dimensions" id="rad5" value="5" checked>
-                  </label>
-                  <label class="btn">
-                    <input label="6x6"type="radio" name="dimensions" id="rad6" value="6">
-                  </label>
-                  <label class="btn">
-                    <input label="7x7"type="radio" name="dimensions" id="rad7" value="7">
-                  </label>
-                  <label class="btn">
-                    <input label="8x8"type="radio" name="dimensions" id="rad8" value="8">
-                  </label>
-                  <label class="btn">
-                    <input label="9x9"type="radio" name="dimensions" id="rad9" value="9">
-                  </label>
-                </div>
-              </form>
-              <div class="reset round" ><img class="but" src="reset.png" id="r" value="5" ></div>
-              <div class="messages">
-                <h2 id="roundnum" style="color: rgb(27, 165, 27)">Round: </h2>
-                
-                <h2 id="highScore" style="color: aqua; ">Record: </h2>
-              </div>
-  
-            </div>
-            <div id="side">
-              <div class="wrong-tiles" id="wrongGrid" count="0" value = "0"></div>
-            </div>
-          </div>
-            <div class="align">
-              <div class="tiles-container"></div>
-              <div class="text" style="color:#42b420;" value="0"></div>
-            </div>
-          
-        </div>
-        
-      </body>
-  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Memory Tiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <h1>Memory Tiles</h1>
+  <div class="game">
+    <div style="float: left;">
 
+      <form class="radio" >
+        <div >
+          <label class="btn">
+            <input label="5x5" type="radio" name="dimensions" id="rad5" value="5" checked>
+          </label>
+          <label class="btn">
+            <input label="6x6" type="radio" name="dimensions" id="rad6" value="6">
+          </label>
+          <label class="btn">
+            <input label="7x7" type="radio" name="dimensions" id="rad7" value="7">
+          </label>
+          <label class="btn">
+            <input label="8x8" type="radio" name="dimensions" id="rad8" value="8">
+          </label>
+          <label class="btn">
+            <input label="9x9" type="radio" name="dimensions" id="rad9" value="9">
+          </label>
+        </div>
+      </form>
     </div>
-    <footer>
-      Min Kim 2023
-    </footer>
-    <script src="main.js" defer></script>
+    <div class="box">
+      <div class="flex">
+        <div id="side">
+          <div class="reset round">
+            <img class="but" src="reset.png" id="r" value="5">
+          </div>
+          <div class="messages">
+            <h2 id="roundnum" style="color: rgb(27, 165, 27)">Round: </h2>
+            <h2 id="highScore" style="color: aqua;">Record: </h2>
+          </div>
+        </div>
+        <div id="side">
+          <div class="wrong-tiles" id="wrongGrid" count="0" value="0"></div>
+        </div>
+      </div>
+      <div class="align">
+        <div class="tiles-container"></div>
+        <div class="text" style="color:#42b420;" value="0"></div>
+      </div>
+    </div>
+  </div>
+  <footer>Min Kim 2023</footer>
+  <script src="main.js" defer></script>
+</body>
 </html>
